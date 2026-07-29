@@ -1,0 +1,3 @@
+#stores constant 
+WORKING_DAYS_MONTH = 22
+WORKING_DAYS_YEAR = 264
