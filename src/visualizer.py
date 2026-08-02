@@ -116,27 +116,36 @@ def create_energy_distribution_chart(df):
 
     plt.figure(figsize=(8, 8))
 
-    plt.pie(
+    labels = [
+        "Desktop",
+        "AC",
+        "Fans",
+        "LED",
+        "Printers",
+        "UPS",
+        "Network"
+    ]
+
+    wedges, _ = plt.pie(
         df["Daily_Energy_kWh"],
-        labels=[
-            "Desktop",
-            "AC",
-            "Fans",
-            "LED",
-            "Printers",
-            "UPS",
-            "Network"
-        ],
-        autopct="%1.1f%%",
+        labels=None,          # No labels on slices
         startangle=90,
-        shadow=True,
+        counterclock=False,
         wedgeprops={
             "edgecolor": "white",
-            "linewidth": 1
-        },
-        textprops={
-            "fontsize": 10
+            "linewidth": 1.5
         }
+    )
+
+    plt.legend(
+        wedges,
+        labels,
+        title="Equipment",
+        loc="center left",
+        bbox_to_anchor=(1.0, 0.5),
+        fontsize=10,
+        title_fontsize=11,
+        frameon=False
     )
 
     plt.title(
@@ -157,8 +166,6 @@ def create_energy_distribution_chart(df):
     )
 
     plt.close()
-
-
 # --------------------------------------------------------
 # Figure 9.1
 # Connected vs Operating Load
